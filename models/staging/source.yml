@@ -1,0 +1,18 @@
+sources:
+  - name: snowflake
+    description: 'Raw data Asia cup cricket which we have extracted'
+    database: ASIA_CUP
+    schema: Raw_data
+    tables:
+      - name: Asia_cups
+      - name: Team_ids
+      - name: batsmans_odi
+      - name : batsmans_t20
+      - name : bowlers_odi
+      - name : bowlers_t20
+      - name : weeketkeepers_odi
+      - name : weeketkeepers_t20
+      - name : champions
+      - name: Player_ids
+      - name : ground_ids
+      - name: player_of_the_match_ids

@@ -1,0 +1,489 @@
+version: 2
+
+models:
+  - name: Fact_player_table
+    description: "Fact table for Players data"
+    columns:
+      - name: Player_Name
+        description: "Name of the player"
+      
+      - name: COUNTRY
+        description: "Country of the player"
+        
+      - name: PLAYER_ID
+        description: "Unique identifier for the player"
+        tests:
+          - unique
+          - not_null
+          - dbt_constraints.primary_key
+        
+      - name: COUNTRY_ID
+        description: "Unique identifier for the country"
+
+  
+
+  - name: dim_batsmans_t20
+    description: "Dimension table for T20 batsmen"
+    columns:
+      - name: Player_Name
+        description: "Name of the batsman"
+
+      - name: COUNTRY
+        description: "Country of the batsman"
+
+      - name: TIME_PERIOD
+        description: "Time period of the T20 matches"
+
+      - name: MATCHES
+        description: "Total number of matches played"
+
+      - name: PLAYED
+        description: "Number of matches played"
+
+      - name: NOT_OUTS
+        description: "Number of times not out"
+
+      - name: RUNS
+        description: "Total runs scored"
+
+      - name: HIGHEST_SCORE
+        description: "Highest individual score in a match"
+
+      - name: BATTING_AVERAGE
+        description: "Batting average"
+
+      - name: BALLS_FACED
+        description: "Total balls faced"
+
+      - name: STRIKE_RATE
+        description: "Batting strike rate"
+
+      - name: CENTURIES
+        description: "Number of centuries scored"
+
+      - name: FIFTIES
+        description: "Number of fifties scored"
+
+      - name: DUCKS
+        description: "Number of times got out without scoring"
+
+      - name: FOURS
+        description: "Number of fours scored"
+
+      - name: SIXES
+        description: "Number of sixes scored"
+
+      - name: PLAYER_ID
+        description: "Unique identifier for the player"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('Fact_player_table')
+              pk_column_name: PLAYER_ID
+
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+        
+  
+  - name: dim_batsmans_odi
+    description: "Dimension table for ODI batsmen"
+    columns:
+      - name: Player_Name
+        description: "Name of the batsman"
+
+      - name: COUNTRY
+        description: "Country of the batsman"
+
+      - name: TIME_PERIOD
+        description: "Time period of the ODI matches"
+
+      - name: MATCHES
+        description: "Total number of matches played"
+
+      - name: PLAYED
+        description: "Number of matches played"
+
+      - name: NOT_OUTS
+        description: "Number of times not out"
+
+      - name: RUNS
+        description: "Total runs scored"
+
+      - name: HIGHEST_SCORE
+        description: "Highest individual score in a match"
+
+      - name: BATTING_AVERAGE
+        description: "Batting average"
+
+      - name: BALLS_FACED
+        description: "Total balls faced"
+
+      - name: STRIKE_RATE
+        description: "Batting strike rate"
+
+      - name: CENTURIES
+        description: "Number of centuries scored"
+
+      - name: FIFTIES
+        description: "Number of fifties scored"
+
+      - name: DUCKS
+        description: "Number of times got out without scoring"
+
+      - name: FOURS
+        description: "Number of fours scored"
+
+      - name: SIXES
+        description: "Number of sixes scored"
+
+      - name: PLAYER_ID
+        description: "Unique identifier for the player"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('Fact_player_table')
+              pk_column_name: PLAYER_ID
+
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+
+  - name: dim_bowlers_odi
+    description: "Dimension table for ODI bowlers"
+    columns:
+      - name: Player_Name
+        description: "Name of the bowler"
+
+      - name: COUNTRY
+        description: "Country of the bowler"
+
+      - name: TIME_PERIOD
+        description: "Time period of the ODI matches"
+
+      - name: MATCHES
+        description: "Total number of matches played"
+
+      - name: PLAYED
+        description: "Number of matches played"
+
+      - name: OVERS
+        description: "Total overs bowled"
+
+      - name: MAIDEN_OVERS
+        description: "Number of maiden overs bowled"
+
+      - name: RUNS
+        description: "Total runs conceded"
+
+      - name: WICKETS
+        description: "Total wickets taken"
+
+      - name: BEST_FIGURE
+        description: "Best bowling figure in a match"
+
+      - name: BOWLING_AVERAGE
+        description: "Bowling average"
+
+      - name: ECONOMY_RATE
+        description: "Bowling economy rate"
+
+      - name: STRIKE_RATE
+        description: "Bowling strike rate"
+
+      - name: FOUR_WICKETS
+        description: "Number of times took four wickets in an inning"
+
+      - name: FIVE_WICKETS
+        description: "Number of times took five or more wickets in an inning"
+
+      - name: PLAYER_ID
+        description: "Unique identifier for the player"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('Fact_player_table')
+              pk_column_name: PLAYER_ID
+
+
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+
+  - name: dim_bowlers_t20
+    description: "Dimension table for T20 bowlers"
+    columns:
+      - name: Player_Name
+        description: "Name of the bowler"
+
+      - name: COUNTRY
+        description: "Country of the bowler"
+
+      - name: TIME_PERIOD
+        description: "Time period of the T20 matches"
+
+      - name: MATCHES
+        description: "Total number of matches played"
+
+      - name: PLAYED
+        description: "Number of matches played"
+
+      - name: OVERS
+        description: "Total overs bowled"
+
+      - name: MAIDEN_OVERS
+        description: "Number of maiden overs bowled"
+
+      - name: RUNS
+        description: "Total runs conceded"
+
+      - name: WICKETS
+        description: "Total wickets taken"
+
+      - name: BEST_FIGURE
+        description: "Best bowling figure in a match"
+
+      - name: BOWLING_AVERAGE
+        description: "Bowling average"
+
+      - name: ECONOMY_RATE
+        description: "Bowling economy rate"
+
+      - name: STRIKE_RATE
+        description: "Bowling strike rate"
+
+      - name: FOUR_WICKETS
+        description: "Number of times took four wickets in an inning"
+
+      - name: FIVE_WICKETS
+        description: "Number of times took five or more wickets in an inning"
+
+      - name: PLAYER_ID
+        description: "Unique identifier for the player"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('Fact_player_table')
+              pk_column_name: PLAYER_ID
+
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+
+  - name: dim_champions
+    description: "Dimension table for cricket champions"
+    columns:
+      - name: YEAR
+        description: "Year of the championship"
+
+      - name: HOST
+        description: "Host country of the championship"
+
+      - name: NO_OF_TEAMS
+        description: "Number of teams in the championship"
+
+      - name: CHAMPION
+        description: "Champion team of the championship"
+
+      - name: RUNNER_UP
+        description: "Runner-up team of the championship"
+
+      - name: PLAYER_OF_THE_SERIES
+        description: "Player of the Series in the championship"
+
+      - name: HIGHEST_RUN_SCORER
+        description: "Player with the highest run scorer in the championship"
+
+      - name: HIGHEST_WICKET_TAKER
+        description: "Player with the highest wicket-taker in the championship"
+
+      - name: CHAMPION_ID
+        description: "Unique identifier for the championship"
+    
+  - name: dim_ground_ids
+    description: "Dimension table for ground IDs"
+    columns:
+      - name: GROUND_ID
+        description: "Unique identifier for the ground"
+        tests:
+          - unique
+          - not_null
+          - dbt_constraints.primary_key
+
+      - name: GROUND
+        description: "Name of the ground"
+
+  - name: dim_player_of_the_match
+    description: "Dimension table for Player of the Match"
+    columns:
+      - name: PLAYER_OF_THE_MATCH_ID
+        description: "Unique identifier for the Player of the Match"
+        tests:
+          - unique
+          - not_null
+          - dbt_constraints.primary_key
+
+      - name: PLAYER_OF_THE_MATCH
+        description: "Name of the Player of the Match"
+
+  - name: dim_team_ids
+    description: "Dimension table for team IDs"
+    columns:
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+        tests:
+          - unique
+          - not_null
+          - dbt_constraints.primary_key
+
+      - name: TEAM
+        description: "Name of the team"
+
+  - name: dim_wicketkeeper_odi
+    description: "Dimension table for ODI wicketkeepers"
+    columns:
+      - name: Player_Name
+        description: "Name of the wicketkeeper"
+
+      - name: COUNTRY
+        description: "Country of the wicketkeeper"
+
+      - name: TIME_PERIOD
+        description: "Time period of the ODI matches"
+
+      - name: MATCHES
+        description: "Total number of matches played"
+
+      - name: PLAYED
+        description: "Number of matches played"
+
+      - name: DISMISSALS
+        description: "Total dismissals by the wicketkeeper"
+
+      - name: CATCHES
+        description: "Total catches by the wicketkeeper"
+
+      - name: STUMPINGS
+        description: "Total stumpings by the wicketkeeper"
+
+      - name: MAXIMUM_DISMISSALS
+        description: "Maximum dismissals in a single match"
+
+      - name: PLAYER_ID
+        description: "Unique identifier for the wicketkeeper"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('Fact_player_table')
+              pk_column_name: PLAYER_ID
+
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+
+  - name: dim_wicketkeeper_t20
+    description: "Dimension table for T20 wicketkeepers"
+    columns:
+      - name: Player_Name
+        description: "Name of the wicketkeeper"
+
+      - name: COUNTRY
+        description: "Country of the wicketkeeper"
+
+      - name: TIME_PERIOD
+        description: "Time period of the T20 matches"
+
+      - name: MATCHES
+        description: "Total number of matches played"
+
+      - name: PLAYED
+        description: "Number of matches played"
+
+      - name: DISMISSALS
+        description: "Total dismissals by the wicketkeeper"
+
+      - name: CATCHES
+        description: "Total catches by the wicketkeeper"
+
+      - name: STUMPINGS
+        description: "Total stumpings by the wicketkeeper"
+
+      - name: MAXIMUM_DISMISSALS
+        description: "Maximum dismissals in a single match"
+
+      - name: PLAYER_ID
+        description: "Unique identifier for the wicketkeeper"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('Fact_player_table')
+              pk_column_name: PLAYER_ID
+
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+
+  - name: fact_asia_cups
+    description: "Fact table for Asia Cups"
+    columns:
+      - name: MATCH_ID
+        description: "Unique identifier for the match"
+
+      - name: TEAM
+        description: "Name of the team"
+
+      - name: TEAM_ID
+        description: "Unique identifier for the team"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('dim_team_ids')
+              pk_column_name: TEAM_ID
+
+      - name: GROUND_ID
+        description: "Unique identifier for the ground"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('dim_ground_ids')
+              pk_column_name: GROUND_ID
+
+
+      - name: TOSS
+        description: "Toss result"
+
+      - name: SELECTION
+        description: "Selection information"
+
+      - name: RESULT
+        description: "Match result"
+
+      - name: PLAYER_OF_THE_MATCH_ID
+        description: "Unique identifier for the Player of the Match"
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('dim_player_of_the_match')
+              pk_column_name: PLAYER_OF_THE_MATCH_ID
+        
+
+      - name: YEAR
+        description: "Year of the match"
+
+      - name: RUN_SCORED
+        description: "Total runs scored in the match"
+
+      - name: WICKET_LOST
+        description: "Total wickets lost in the match"
+
+      - name: FOURS
+        description: "Total fours scored in the match"
+
+      - name: SIXES
+        description: "Total sixes scored in the match"
+
+      - name: EXTRAS
+        description: "Total extras in the match"
+
+      - name: RUN_RATE
+        description: "Run rate in the match"
+
+      - name: AVG_BAT_STRIKE_RATE
+        description: "Average batting strike rate in the match"
+
+      - name: HIGHEST_SCORE
+        description: "Highest individual score in the match"
+
+      - name: WICKET_TAKEN
+        description: "Total wickets taken in the match"
+
+      - name: GIVEN_EXTRAS
+        description: "Total given extras in the match"
+
+      - name: HIGHEST_INDIVIDUAL_WICKET
+        description: "Highest individual wickets taken in the match"

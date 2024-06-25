@@ -1,0 +1,6 @@
+sources:
+  - name: ad_platform
+    database: ASIA_CUP
+    schema: public
+    tables:
+      - name: RAW_AD_PLATFORM

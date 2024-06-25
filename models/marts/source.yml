@@ -1,0 +1,20 @@
+sources:
+  - name: snowflake
+    description: 'Raw data Asia cup cricket which we have extracted'
+    database: ASIA_CUP
+    schema: staging
+    tables:
+      - name: stg_asia_cups
+      - name : stg_batsmans_t20
+      - name : stg_batsmans_odi
+      - name : stg_bowlers_odi
+      - name : stg_bowlers_t20
+      - name : stg_champion
+      - name : stg_ground_ids
+      - name : stg_player_ids
+      - name : stg_team_ids
+      - name : stg_wicketkeeper_odi
+      - name : stg_wicketkeeper_t20
+    
+
+

@@ -1,0 +1,462 @@
+version: 2
+
+models:
+  - name: stg_asia_cups
+    description: "Description of your stg_asia_cups model."
+
+    columns:
+      - name: match_id
+        description: "ID of the match."
+        tests:
+          - not_null
+          
+      - name: team_id
+        description: "ID of the team."
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('stg_team_ids')
+              pk_column_name: team_id
+
+      - name: ground_id
+        description: "ID of the ground."
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('stg_ground_ids')
+              pk_column_name: ground_id
+
+      - name: player_of_the_match_id
+        description: "ID of the player of the match."
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('stg_player_of_the_match_ids')
+              pk_column_name: player_of_the_match_id
+
+
+      - name: year
+        description: "Year of the match."
+
+      - name: run_scored
+        description: "Total runs scored in the match."
+  
+
+      - name: wicket_lost
+        description: "Number of wickets lost in the match."
+  
+
+      - name: fours
+        description: "Number of fours scored in the match."
+      
+
+      - name: sixes
+        description: "Number of sixes scored in the match."
+      
+
+      - name: extras
+        description: "Extra runs scored in the match."
+      
+
+      - name: run_rate
+        description: "Run rate of the team in the match."
+      
+
+      - name: avg_bat_strike_rate
+        description: "Average batting strike rate."
+      
+
+      - name: highest_score
+        description: "Highest individual score in the match."
+      
+
+      - name: wicket_taken
+        description: "Number of wickets taken in the match."
+      
+
+      - name: given_extras
+        description: "Number of extras given in the match."
+      
+
+      - name: highest_individual_wicket
+        description: "Highest individual wicket taken in the match."
+      
+
+  - name: stg_batsmans_odi
+    description: "Description of your stg_batsmans model."
+
+    columns:
+      - name: Player_Name
+        description: "Name of the player."
+
+      - name: country
+        description: "Country of the player."
+    
+      - name: time_period
+        description: "Time period of the statistics."
+
+      - name: matches
+        description: "Number of matches played."
+  
+      - name: played
+        description: "Number of matches played."
+
+      - name: not_outs
+        description: "Number of times not out."
+
+      - name: runs
+        description: "Total runs scored."
+
+      - name: highest_score
+        description: "Highest individual score."
+    
+      - name: batting_average
+        description: "Batting average."
+      
+      - name: balls_faced
+        description: "Number of balls faced."
+      
+      - name: strike_rate
+        description: "Batting strike rate."
+        
+      - name: centuries
+        description: "Number of centuries scored."
+      
+      - name: fifties
+        description: "Number of fifties scored."
+      
+      - name: ducks
+        description: "Number of ducks scored."
+        
+      - name: fours
+        description: "Number of fours scored."
+       
+      - name: sixes
+        description: "Number of sixes scored."
+        
+      - name: player_id
+        description: "ID of the player."
+        
+  - name: stg_batsmans_T20
+    description: "Description of your stg_batsmans model."
+
+    columns:
+      - name: Player_Name
+        description: "Name of the player."
+       
+      - name: country
+        description: "Country of the player."
+        
+      - name: time_period
+        description: "Time period of the statistics."
+        
+      - name: matches
+        description: "Number of matches played."
+        
+      - name: played
+        description: "Number of matches played."
+        
+
+      - name: not_outs
+        description: "Number of times not out."
+        
+      - name: runs
+        description: "Total runs scored."
+        
+      - name: highest_score
+        description: "Highest individual score."
+        
+      - name: batting_average
+        description: "Batting average."
+        
+      - name: balls_faced
+        description: "Number of balls faced."
+        
+      - name: strike_rate
+        description: "Batting strike rate."
+        
+      - name: centuries
+        description: "Number of centuries scored."
+        
+      - name: fifties
+        description: "Number of fifties scored."
+        
+      - name: ducks
+        description: "Number of ducks scored."
+        
+      - name: fours
+        description: "Number of fours scored."
+        
+      - name: sixes
+        description: "Number of sixes scored."
+        
+      - name: player_id
+        description: "ID of the player."
+        
+  - name: stg_bowlers_odi
+    description: "Description of your bowlers model."
+
+    columns:
+      - name: Player_Name
+        description: "Name of the player."
+        
+      - name: country
+        description: "Country of the player."
+        
+      - name: time_period
+        description: "Time period of the statistics."
+        
+      - name: matches
+        description: "Number of matches played."
+        
+      - name: played
+        description: "Number of matches played."
+        
+      - name: overs
+        description: "Number of overs bowled."
+        
+
+      - name: maiden_overs
+        description: "Number of maiden overs bowled."
+        
+      - name: runs
+        description: "Total runs conceded."
+        
+
+      - name: wickets
+        description: "Number of wickets taken."
+        
+
+      - name: best_figure
+        description: "Best bowling figure in an innings."
+
+      - name: bowling_average
+        description: "Bowling average."
+       
+      - name: economy_rate
+        description: "Economy rate."
+        
+      - name: strike_rate
+        description: "Bowling strike rate."
+        
+      - name: four_wickets
+        description: "Number of innings with four wickets taken."
+        
+      - name: five_wickets
+        description: "Number of innings with five wickets taken."
+        
+
+      - name: player_id
+        description: "ID of the player."
+        
+  - name: stg_bowlers_t20
+    description: "Description of your bowlers model."
+
+    columns:
+      - name: Player_Name
+        description: "Name of the player."
+        
+      - name: country
+        description: "Country of the player."
+        
+      - name: time_period
+        description: "Time period of the statistics."
+        
+      - name: matches
+        description: "Number of matches played."
+        
+
+      - name: played
+        description: "Number of matches played."
+        
+
+      - name: overs
+        description: "Number of overs bowled."
+        
+      - name: maiden_overs
+        description: "Number of maiden overs bowled."
+        
+      - name: runs
+        description: "Total runs conceded."
+        
+      - name: wickets
+        description: "Number of wickets taken."
+        
+      - name: best_figure
+        description: "Best bowling figure in an innings."
+        
+      - name: bowling_average
+        description: "Bowling average."
+        
+      - name: economy_rate
+        description: "Economy rate."
+        
+      - name: strike_rate
+        description: "Bowling strike rate."
+        
+      - name: four_wickets
+        description: "Number of innings with four wickets taken."
+        
+      - name: five_wickets
+        description: "Number of innings with five wickets taken."
+        
+
+      - name: player_id
+        description: "ID of the player."
+        
+  - name: stg_champion
+    description: "Description of your stg_champions model."
+
+    columns:
+      - name: year
+        description: "Year of the champions."
+        
+      - name: champion
+        description: "Name of the champion team."
+        
+      - name: runner_up
+        description: "Name of the runner-up team."
+        
+
+      - name: match_id
+        description: "ID of the match."
+        
+
+      - name: host
+        description: "Host country."
+        
+      - name: no_of_teams
+        description: "Number of teams."
+        
+      - name: player_of_the_series
+        description: "Player of the series."
+       
+      - name: highest_run_scorer
+        description: "Highest run-scorer."
+        
+      - name: highest_wicket_taker
+        description: "Highest wicket-taker."
+        
+  - name: stg_ground_ids
+    description: "Description of your stg_grounds model."
+
+    columns:
+      - name: ground_id
+        description: "ID of the ground."
+        tests:
+          - not_null
+          - unique
+          - dbt_constraints.primary_key
+
+      - name: ground
+        description: "Name of the ground."
+        tests:
+          - not_null
+
+  - name: stg_player_ids
+    description: "Description of your stg_players model."
+
+    columns:
+      - name: Player_Name
+        description: "Name of the player."
+        tests:
+          - not_null
+
+      - name: player_id
+        description: "ID of the player."
+        tests:
+          - not_null
+          - unique
+          - dbt_constraints.primary_key
+
+  - name: stg_player_of_the_match_ids
+    description: "Description of your stg_player_of_the_match model."
+
+    columns:
+      - name: player_of_the_match_id
+        description: "ID of the player of the match."
+        tests:
+          - unique
+          - dbt_constraints.primary_key
+
+      - name: player_of_the_match
+        description: "Name of the player of the match."
+
+  - name: stg_team_ids
+    description: "Description of your stg_teams model."
+
+    columns:
+      - name: team_id
+        description: "ID of the team."
+        tests:
+          - not_null
+          - unique
+          - dbt_constraints.primary_key
+
+      - name: team
+        description: "Name of the team."
+        tests:
+          - not_null
+
+  - name: stg_wicketkeeper_odi
+    description: "Description of your stg_players model."
+
+    columns:
+      - name: Player_Name
+        description: "Name of the player."
+
+      - name: country
+        description: "Country of the player."
+
+      - name: time_period
+        description: "Time period of the statistics."
+
+      - name: matches
+        description: "Number of matches played."
+
+      - name: played
+        description: "Number of matches played."
+
+      - name: dismissals
+        description: "Total number of dismissals."
+
+      - name: catches
+        description: "Number of catches taken."
+
+      - name: stumpings
+        description: "Number of stumpings made."
+
+      - name: maximum_dismissals
+        description: "Maximum number of dismissals in a match."
+
+      - name: player_id
+        description: "ID of the player."
+
+  - name: stg_wicketkeepers_t20
+    description: "Description of your stg_players model."
+
+    columns:
+      - name: Player_Name
+        description: "Name of the player."
+
+      - name: country
+        description: "Country of the player."
+
+      - name: time_period
+        description: "Time period of the statistics."
+
+      - name: matches
+        description: "Number of matches played."
+
+      - name: played
+        description: "Number of matches played."
+
+      - name: dismissals
+        description: "Total number of dismissals."
+
+      - name: catches
+        description: "Number of catches taken."
+
+      - name: stumpings
+        description: "Number of stumpings made."
+
+      - name: maximum_dismissals
+        description: "Maximum number of dismissals in a match."
+
