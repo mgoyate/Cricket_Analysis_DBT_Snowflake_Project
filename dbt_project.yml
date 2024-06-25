@@ -1,0 +1,40 @@
+name: 'ASIA_CUP'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+log-path: "logs"
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+models:
+  ASIA_CUP:  # ASIA_CUP: This is the TARGET DATABASE
+    Raw_data:  #Raw_data: This is the TARGET SCHEMA ( if we not define target schemas in this file 
+                                                      #the outputs will be save in default schema#)
+      +materialized: view
+      +schema: Raw_data
+      +tags:
+          - t1
+    
+    staging:
+      +materialized: ephemeral
+      +schema: staging
+      +tags:
+          - t2
+
+    marts:
+      +materialized: table
+      +schema: marts
+      +tags:
+          - t3
+    
